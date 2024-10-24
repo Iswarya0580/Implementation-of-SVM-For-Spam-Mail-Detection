@@ -8,22 +8,57 @@ To write a program to implement the SVM For Spam Mail Detection.
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
-1. 
-2. 
-3. 
-4. 
+```
+Step 1.Start
+Step 2.Import the necessary python packages using import statements.
+Step 3.Read the given csv file using read_csv() method and print the number of contents to be displayed using df.head().
+Step 4.Split the dataset using train_test_split.
+Step 5.Calculate Y_Pred and accuracy.
+Step 6.Print all the outputs.
+Step 7.End the Program.
+```
 
 ## Program:
 ```
-/*
 Program to implement the SVM For Spam Mail Detection..
-Developed by: 
-RegisterNumber:  
-*/
+Developed by: Iswarya P
+RegisterNumber:  212223230082
+```
+
+```
+import pandas as pd
+data=pd.read_csv("C:/Users/Manju Mageswari/OneDrive/Desktop\Ishu/ml/spam.csv",encoding='Windows-1252')
+data.head()
+data.info()
+data.isnull().sum()
+x=data["v1"].values
+y=data["v2"].values
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=0)
+from sklearn.feature_extraction.text import CountVectorizer
+cv=CountVectorizer()
+x_train=cv.fit_transform(x_train)
+x_test=cv.fit_transform(x_test)
+from sklearn.svm import SVC
+svc=SVC()
+svc.fit(x_train,y_train)
+y_pred=svc.predict(x_test)
+y_pred
+from sklearn import metrics
+accuracy=metrics.accuracy_score(y_test,y_pred)
+accuracy
 ```
 
 ## Output:
-![SVM For Spam Mail Detection](sam.png)
+### Head:
+![Screenshot 2024-10-24 090718](https://github.com/user-attachments/assets/8d5f9ec5-e9db-454e-87be-54cae7143942)
+
+### Info:
+![Screenshot 2024-10-24 090745](https://github.com/user-attachments/assets/4a481a20-c14d-45d4-bfb4-e0699d7ea4e4)
+
+### Accuracy:
+![Screenshot 2024-10-24 090812](https://github.com/user-attachments/assets/b8d9bd8e-8959-450b-9240-54470d1db3c9)
+
 
 
 ## Result:
